@@ -1,0 +1,48 @@
+<form name="logupForm" class="form-horizontal">
+	<div class="form-group text-center">
+		<h2 class="form-signin-heading"> Afiliarse </h2>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-3 control-label"> Email </label>
+		<div class="col-sm-6">
+			<input ng-model="Ctrl.data.username" name="username" aria-rules="required|email" aria-title="Email" class="form-control" placeholder="pperez@gmail.com">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-3 control-label"> Password </label>
+		<div class="col-sm-6">
+			<input ng-model="Ctrl.data.password" name="password" aria-rules="required" aria-title="Password" class="form-control" placeholder="Password" type="password">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-3 control-label"> Repetir Password </label>
+		<div class="col-sm-6">
+			<input ng-model="Ctrl.data.repeat_password" name="repeat_password" aria-rules="same:password" aria-title="Repetir Password" class="form-control" placeholder="Repetir Password" type="password">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-3 control-label"> Tipo de Persona </label>
+		<div class="col-sm-6">
+			<label class="radio-inline">
+				<input ng-model="Ctrl.data.discriminant" value="paciente" name="discriminant" aria-rules="required" aria-title="Tipo de Persona" type="radio">Paciente
+			</label>
+			<label class="radio-inline">
+				<input ng-model="Ctrl.data.discriminant" value="doctor" name="discriminant" aria-rules="required" aria-title="Tipo de Persona" type="radio"> Doctor
+			</label>
+			<label class="radio-inline">
+				<input ng-model="Ctrl.data.discriminant" value="admin" name="discriminant" aria-rules="required" aria-title="Tipo de Persona" type="radio"> Admin
+			</label>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-3 col-sm-6 text-right">
+			<a ui-sref="login" class="btn btn-link"> Ingresar </a>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-3 col-sm-6">
+			<b class="btn btn-lg btn-primary btn-block" ng-click="Ctrl.logup( Ctrl.data )"> Aceptar </b>
+		</div>
+	</div>
+</form>
