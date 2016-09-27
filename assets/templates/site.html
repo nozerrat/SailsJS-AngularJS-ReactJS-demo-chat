@@ -1,34 +1,7 @@
-<div ng-show="$authorized">
-	<nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="navController as Ctrl">
-		<div class="container">
-			<div class="navbar-header">
-				<!-- data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" -->
-				<a class="navbar-brand" href="#"> Project Chat </a>
-				<button type="button" class="navbar-toggle" >
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-			</div>
-			<div id="navbar" class="navbar-collapse" ng-class="Ctrl.collapse">
-				<ul class="nav navbar-nav">
-					<li>
-						<a ui-sref="site.home" ui-sref-active="active">Home</a>
-					</li>
-					<li>
-						<a ui-sref="site.chat" ui-sref-active="active">chat</a>
-					</li>
-					<li>
-						<a ui-sref="site.react" ui-sref-active="active">react</a>
-					</li>
-					<li>
-						<a href="#" ui-sref-active="active" ng-click="$logout()">Logout</a>
-					</li>
-				</ul>
-			</div><!--/.nav-collapse -->
-		</div>
-	</nav>
+<div ng-show="$authorized" onmouseenter="" onmouseleave="">
+	<div ng-controller="navController as Ctrl">
+		<div id="ContainerNavbarReact"></div>
+	</div>
 	<br clear="all" />
 	<ui-view name="site"></ui-view>
 </div>

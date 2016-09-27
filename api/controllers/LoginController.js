@@ -5,16 +5,16 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
-var subscribeToFunRoom= function( req  ) {
+var subscribeToFunRoom = function( req  ) {
 
-	var roomName = 'chat';
+	var roomName = 'chatServer';
 	if ( req.session.auth.authorized ) {
 		sails.sockets.join( req, roomName, function( err ) {
 			if (err) return res.serverError( err );		
 			
-			console.log( req.session.auth.username+' Subscribed to a fun room called '+roomName+'!' )
-			console.log( 'sockets.getId:',sails.sockets.getId(req) )
-			console.log(  JSON.stringify( sails.sockets.socketRooms( req.socket ) ) ) 
+			console.log( '' )
+			console.log( 'sockets.getId:',sails.sockets.getId( req ) )
+			console.log( 'socketRooms:',JSON.stringify( sails.sockets.socketRooms( req.socket ) ) )
 			console.log( '' )
 		});
 	}
@@ -41,14 +41,12 @@ module.exports = {
 					req.session.auth = user;
 
 					subscribeToFunRoom( req );
-					// req.session.auth.subscribedToFunRoom = true;
-
 
 					return res.ok( equal );
 				}
 				else {
 					req.session.auth = { authorized: undefined };
-					return res.notFound( validatorService.get( {field:'username',rule:'required'} ) );
+					return res.notFound( validatorService.get( [{field:'username',rule:'invalid_authorize'},{field:'password',rule:'invalid_authorize'}] ) );
 				}
 			});
 		});
@@ -62,8 +60,7 @@ module.exports = {
 			req.session.auth = {};
 		}
 
-		// if ( req.session.auth.authorized!==undefined )
-			subscribeToFunRoom( req );
+		subscribeToFunRoom( req );
 
 		return res.ok( req.session.auth );
 	},

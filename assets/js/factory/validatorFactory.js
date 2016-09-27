@@ -15,7 +15,7 @@ win.angular.module( 'app' )
 			return validatorFactory;
 		**/
 		self.register = function( nameForm ) {
-			win.Validator.cleanAll().removeAll();
+			win.Validator.cleanAll();//.removeAll();
 			win.Validator.register( nameForm );
 			return self;
 		};
@@ -165,8 +165,11 @@ win.angular.module( 'app' )
 			maxLength: {
 				message: 'Demasiado largo',
 			},
-			'username23505': { // código lanzado por Postgres que indica que una Primary Key esta repetida
+			username23505: { // código lanzado por Postgres que indica que una Primary Key esta repetida
 				message: 'El <b>Email</b> que ingresó ya existe',
+			},
+			invalid_authorize: { // Indica si el email o passworod es incorrecto
+				message: 'El valor <b>Email</b> o <b>Password</b> son invalidos',
 			},
 		}]);
 

@@ -7,15 +7,25 @@
 module.exports = {
 
 	/**
-		Se registra los campos y su relas que haya causado el error
-		Nota: solo se registran las reglas que WaterlineJS no soporta,
-		es decir, aquellas reglas personalizadas.
+		Se registra los campos y su relas que haya causado el error.
+		Nota: solo se registran las reglas que WaterlineJS no soporta, es decir, aquellas reglas personalizadas.
+		Retorna el estado actual de los valores registrado.
 		e.g:
 		validatorService.set({field:'username',rule:'required'});
+		e.g:
+		validatorService.set([ {field:'username',rule:'required'},{field:'password',rule:'required'} ]);
 	**/
 	set: function( arg ) {
-		this.invalidAttributes[arg.field] = [{rule: arg.rule}];
-		this.error = Object.keys( this.invalidAttributes ).lenght;
+		if ( _.isArray( arg ) ) {
+			_.each( arg, function( el ) {
+				this.invalidAttributes[ el.field ] = [{ rule: el.rule }];
+			}.bind( this ));
+			this.error = this.invalidAttributes.lenght;
+		}
+		else {
+			this.invalidAttributes[ arg.field ] = [{ rule: arg.rule }];
+			this.error = Object.keys( this.invalidAttributes ).lenght;
+		}
 	},
 
 	/**

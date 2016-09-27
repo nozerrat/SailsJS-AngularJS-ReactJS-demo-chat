@@ -116,9 +116,17 @@
 			register: function( target ) {
 			
 				this.required_without = this.required_less;
+				var forms = win.document.forms;
 
-				for ( var i=0; i<win.document.forms[ target ].length; i++ ) {
-					var element = win.document.forms[ target ][ i ];
+				try{
+					length = forms[ target ].length;
+				}catch(err) {
+					length = 0;
+				}
+
+
+				for ( var i=0; i<length; i++ ) {
+					var element = forms[ target ][ i ];
 					var field;
 					try { field = element.getAttribute( 'name' ) }
 					catch( err ) { field = null }
