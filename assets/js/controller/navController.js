@@ -41,7 +41,7 @@ function( $state , siteAuthorizedService ) {
 					createElement(Collapse,{onMouseLeave:this.linkHandle},
 						createElement(Nav,{},
 							createElement(NavItem,{onClick:this.linkHandle.bind(this,'home'),href:"#"},'Home'),//NavItem
-							createElement(NavDropdown,{eventKey:3,title:"Dropdown",href:"#"},
+							createElement(NavDropdown,{title:"Dropdown",href:"#"},
 								createElement(MenuItem,{onClick:this.linkHandle.bind(this,'chat'),href:"#"},'Chat'),//MenuItem
 								createElement(MenuItem,{divider:true}),//MenuItem
 								createElement(MenuItem,{onClick:this.linkHandle.bind(this,'react'),href:"#"},'Chat React')//MenuItem
